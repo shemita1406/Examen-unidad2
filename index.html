@@ -1,0 +1,154 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Tiendita perrona</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Elite login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta-Tags -->
+	<!-- Stylesheets -->
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<!--// Stylesheets -->
+	<!--fonts-->
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+	<!--//fonts-->
+</head>
+
+<body>
+	<h1>La tiendita curipapu </h1>
+	<div class="w3ls-login">
+		<!-- form starts here -->
+		<form action="#" method="post">
+			
+			<div class="agile-field-txt">
+				<label>
+					<i class="fa fa-user" aria-hidden="true"></i> Nombre :</label>
+				<input type="text" name="name" id="nombre" placeholder=" " required="" />
+			</div>
+			<div class="agile-field-txt">
+				<label>
+					<i class="fa fa-lock" aria-hidden="true"></i> Precio :</label>
+				<a href="#" class="w3ls-right" id = "click-descuento">Quieres saber si hay descuentos?</a>
+				<input type="text" name="password" id="precio" placeholder=" " required="" id="myInput" />
+				
+			</div>
+			<div class="agile-field-txt">
+				<label>
+					<i class="fa fa-user" aria-hidden="true"></i> cantidad :</label>
+				<input type="text" name="name" id="cantidad" placeholder=" " required="" />
+			</div>
+			<script>
+				function myFunction() {
+					var x = document.getElementById("myInput");
+					if (x.type === "password") {
+						x.type = "text";
+					} else {
+						x.type = "password";
+					}
+				}
+			</script>
+			<!-- //script for show password -->
+			<div class="w3ls-login  w3l-sub">
+				<input type="button" id="btn-agregar"  value="Agregar al carrito">
+			</div>
+
+			
+			<div class="col-md-5 col-lg-4 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-primary">Carrito</span>
+                  <span class="badge bg-primary rounded-pill" id="cantidad-carrito"></span>
+                </h4>
+                <ul class="list-group mb-3">  
+                    <div id="pizarra">
+                        
+                    </div>                                  
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (MX)</span>
+                    <strong id="suma-total">$0.00</strong>
+                  </li>
+                </ul>        
+                
+              </div>
+			  <div class="w3ls-login  w3l-sub">
+				<input type="button" id="btn-compra"  value="Comprar">
+			</div>
+		</form>
+	</div>
+	
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.7/dist/sweetalert2.all.min.js"></script>
+<script src="jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){ // - Cuando el documento este listo
+
+        var sumatotal = 0;  // - Variable para la suma total
+        var productos = []; // - Arreglo para guardar los productos
+
+        // - Funcion para agregar productos al carrito al darle click al boton
+        $("#btn-agregar").click(function(){            
+            let producto = {
+                "nombre" : $("#nombre").val(),
+                "precio" : $("#precio").val(),
+                "cantidad" : $("#cantidad").val()
+            }; 
+
+			
+
+			
+            productos.push(producto);
+            sumatotal = sumatotal + (producto.precio * producto.cantidad);
+            $("#pizarra").append('<li class="list-group-item d-flex justify-content-between bg-light"><div class="text-success"><h6 class="my-0">'+producto.nombre+'</h6><small>'+producto.cantidad+'</small></div><span class="text-success">$'+(producto.cantidad * producto.precio)+'</span></li>');
+            $("#suma-total").html('$'+sumatotal);            
+            $("#cantidad-carrito").html(productos.length);
+			
+        });
+
+        
+       
+
+		$("#click-descuento").click(function(){
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Lo sentimos!, aun no tenemos descuentos',
+				footer: 'Todo es culpa de amlo'
+				});
+    	});
+
+		$("#btn-compra").click(function(){
+			Swal.fire({
+				position: 'top-end',
+				icon: 'success',
+				title: 'Tu compra fue realizada con exito',
+				showConfirmButton: false,
+				timer: 150
+			})
+
+			location.reload();
+		})
+	});
+
+</script>
+
+</html>
